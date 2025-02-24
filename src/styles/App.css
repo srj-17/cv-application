@@ -1,0 +1,53 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    display: grid;
+    gap: 8px;
+}
+
+label {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    position: relative;
+}
+
+.btn-container {
+    max-width: 250px;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 8px;
+}
+
+button {
+    padding: 10px 40px;
+    background: lightcoral;
+    border: 2px solid pink;
+    border-radius: 10px;
+}
+
+button:hover {
+    background: lightpink;
+}
+
+button[type="submit"] {
+    background: lightgreen;
+    border: 2px solid green;
+}
+
+button:active {
+    background: pink;
+}
+
+button[type="submit"]:active {
+    background: green;
+}
+
+button[type="submit"]:hover {
+    background: lightblue;
+}
