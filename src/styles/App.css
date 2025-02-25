@@ -6,6 +6,11 @@
     flex-direction: column;
 }
 
+h1,
+h2 {
+    font-size: 1rem;
+}
+
 .container {
     display: grid;
     grid-auto-flow: column;
@@ -21,7 +26,17 @@
     width: max-content;
 }
 
-.info {
+.form-container .headers {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+}
+
+.headers h1 {
+    cursor: pointer;
+}
+
+.headers .current-form .info {
     display: grid;
     gap: 8px;
 }

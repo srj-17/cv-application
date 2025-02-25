@@ -1,36 +1,66 @@
 import { useState } from "react";
 import "../styles/App.css";
-import InfoForm from "./InfoForm";
 import Info from "./Info";
-import requiredInfo from "./data";
+import data from "./data";
+import InfoForm from "./InfoForm";
 
 // 0 general info, 1 education info, 2 experience info
 
 const getRequiredInfo = (infoId) => {
-    return requiredInfo.find((info) => {
+    return data.find((info) => {
         return info.id === infoId;
     });
 };
 
 function App() {
-    const [requiredInfoId, setRequiredInfoId] = useState(0);
+    const [currentInfoId, setCurrentInfoId] = useState(0);
 
     function onSubmit(e) {
         e.preventDefault();
-        setRequiredInfoId(requiredInfoId + 1);
-        if (requiredInfoId === 2) setRequiredInfoId(2);
+        setCurrentInfoId(currentInfoId + 1);
+        if (currentInfoId === 2) setCurrentInfoId(2);
     }
 
-    const requiredInfo = getRequiredInfo(requiredInfoId);
+    function onClickHeader(e) {
+        const clickedFormId = e.target.closest(".info-subform").id;
+        setCurrentInfoId(+clickedFormId);
+    }
+
+    const currentInfo = getRequiredInfo(currentInfoId);
 
     return (
         <div className="container">
             <div className="form-container">
-                <InfoForm
-                    data={requiredInfo.info}
-                    type={requiredInfo.type}
+                <div className="headers">
+                    {data.map((info) => {
+                        return (
+                            <div
+                                key={info.id}
+                                id={info.id}
+                                className="info-subform"
+                            >
+                                <h1
+                                    className={info.type + "-info "}
+                                    onClick={onClickHeader}
+                                >
+                                    {info.type} Information
+                                </h1>
+                                <InfoForm
+                                    currentTurn={currentInfoId === info.id}
+                                    data={currentInfo.info}
+                                    type={currentInfo.type}
+                                    onSubmit={onSubmit}
+                                    disabled={currentInfoId !== info.id}
+                                />
+                            </div>
+                        );
+                    })}
+                </div>
+                {/* <InfoForm
+                    data={data.info}
+                    type={data.type}
                     onSubmit={onSubmit}
-                />
+                />*/}
             </div>
             <div className="form-resume-divider-line"></div>
             <div className="resume-container">

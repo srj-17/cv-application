@@ -7,6 +7,7 @@ function CustomInput({
     requirement = false,
     placeholder,
     onInputChange,
+    disabled,
 }) {
     const [value, setValue] = useState("");
 
@@ -15,6 +16,7 @@ function CustomInput({
             <label>
                 {info} :
                 <input
+                    disabled={disabled}
                     id={id}
                     type={type}
                     value={value}
