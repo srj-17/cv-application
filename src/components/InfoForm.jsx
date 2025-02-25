@@ -23,6 +23,7 @@ function InfoForm({ type, data, onSubmit, currentTurn, disabled }) {
                                     id={info.id}
                                     info={info.info}
                                     type={info.type}
+                                    storedValue={info.value}
                                     placeholder={info.placeholder}
                                     onInputChange={inputChangeHandler}
                                 />

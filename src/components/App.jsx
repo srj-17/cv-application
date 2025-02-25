@@ -56,11 +56,6 @@ function App() {
                         );
                     })}
                 </div>
-                {/* <InfoForm
-                    data={data.info}
-                    type={data.type}
-                    onSubmit={onSubmit}
-                />*/}
             </div>
             <div className="form-resume-divider-line"></div>
             <div className="resume-container">

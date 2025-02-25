@@ -8,8 +8,9 @@ function CustomInput({
     placeholder,
     onInputChange,
     disabled,
+    storedValue,
 }) {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState(storedValue);
 
     return (
         <>
