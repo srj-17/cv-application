@@ -1,9 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 #root {
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
     display: flex;
     flex-direction: column;
+    height: 100vh;
+}
+
+:root {
+    --bg: #545f66;
+    --primary: #49555a;
+    --secondary: #bbc7ce;
+    --text: #d0f4ea;
+    --accent: #ff5964;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
 }
 
 h1,
@@ -14,44 +33,37 @@ h2 {
 .container {
     display: grid;
     grid-auto-flow: column;
+    gap: 10px;
+    min-height: 100%;
 }
 
-.form-resume-divider-line {
-    max-width: 4px;
-    border-radius: 15px;
-    background-color: black;
-}
-
-.form-container {
-    width: max-content;
-}
-
-.form-container .headers {
-    display: flex;
-    flex-direction: column;
-    font-size: 1rem;
-}
-
-.headers h1 {
+/* subform part */
+h1 {
     cursor: pointer;
 }
 
-.headers .current-form .info {
-    display: grid;
-    gap: 8px;
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--primary);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+}
+
+.form-container h1 {
+    font-size: 1.2rem;
+}
+
+.form-container .info-subform {
+    padding: 0 20px;
 }
 
 label {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     position: relative;
-}
-
-.btn-container {
     max-width: 250px;
-    display: grid;
-    grid-auto-flow: column;
-    gap: 8px;
 }
 
 button {
@@ -80,4 +92,41 @@ button[type="submit"]:hover {
 
 button[type="submit"]:active {
     background: green;
+}
+
+/* CV part */
+.resume-container {
+    background: var(--secondary);
+    color: #222;
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    max-width: 100%;
+    min-height: 100%;
+
+    padding: 20px 40px;
+    cursor: default;
+}
+
+.resume-container .info-card {
+    display: flex;
+}
+
+.resume-container .title {
+    font-size: 1.5rem;
+    padding: 20px 0px;
+}
+
+.resume-container > .title {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.info-name {
+    font-weight: bold;
+}
+
+.General-info .mail {
+    display: flex;
+    gap: 8px;
 }

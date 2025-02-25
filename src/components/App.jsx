@@ -31,33 +31,30 @@ function App() {
     return (
         <div className="container">
             <div className="form-container">
-                <div className="headers">
-                    {data.map((info) => {
-                        return (
-                            <div
-                                key={info.id}
-                                id={info.id}
-                                className="info-subform"
+                {data.map((info) => {
+                    return (
+                        <div
+                            key={info.id}
+                            id={info.id}
+                            className="info-subform"
+                        >
+                            <h1
+                                className={info.type + "-info"}
+                                onClick={onClickHeader}
                             >
-                                <h1
-                                    className={info.type + "-info "}
-                                    onClick={onClickHeader}
-                                >
-                                    {info.type} Information
-                                </h1>
-                                <InfoForm
-                                    currentTurn={currentInfoId === info.id}
-                                    data={currentInfo.info}
-                                    type={currentInfo.type}
-                                    onSubmit={onSubmit}
-                                    disabled={currentInfoId !== info.id}
-                                />
-                            </div>
-                        );
-                    })}
-                </div>
+                                {info.type} Information
+                            </h1>
+                            <InfoForm
+                                currentTurn={currentInfoId === info.id}
+                                data={currentInfo.info}
+                                type={currentInfo.type}
+                                onSubmit={onSubmit}
+                                disabled={currentInfoId !== info.id}
+                            />
+                        </div>
+                    );
+                })}
             </div>
-            <div className="form-resume-divider-line"></div>
             <div className="resume-container">
                 <Info />
             </div>
