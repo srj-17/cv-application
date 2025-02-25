@@ -6,6 +6,21 @@
     flex-direction: column;
 }
 
+.container {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.form-resume-divider-line {
+    max-width: 4px;
+    border-radius: 15px;
+    background-color: black;
+}
+
+.form-container {
+    width: max-content;
+}
+
 .info {
     display: grid;
     gap: 8px;
@@ -44,10 +59,10 @@ button:active {
     background: pink;
 }
 
-button[type="submit"]:active {
-    background: green;
-}
-
 button[type="submit"]:hover {
     background: lightblue;
+}
+
+button[type="submit"]:active {
+    background: green;
 }

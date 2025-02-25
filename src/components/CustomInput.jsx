@@ -3,8 +3,10 @@ import { useState } from "react";
 function CustomInput({
     info,
     type = "text",
+    id,
     requirement = false,
     placeholder,
+    onInputChange,
 }) {
     const [value, setValue] = useState("");
 
@@ -13,11 +15,15 @@ function CustomInput({
             <label>
                 {info} :
                 <input
+                    id={id}
                     type={type}
                     value={value}
                     placeholder={placeholder}
                     required={requirement}
-                    onChange={(event) => setValue(event.target.value)}
+                    onChange={(e) => {
+                        setValue(e.target.value);
+                        onInputChange(e);
+                    }}
                 />
             </label>
             <div className="seperator"></div>
