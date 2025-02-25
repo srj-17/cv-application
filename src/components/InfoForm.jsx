@@ -33,9 +33,6 @@ function InfoForm({ type, data, onSubmit, currentTurn, disabled }) {
                         <button type="submit" className="submit">
                             Submit
                         </button>
-                        <button type="button" className="edit">
-                            Edit
-                        </button>
                     </div>
                 </form>
             </section>
