@@ -1,15 +1,19 @@
 import CustomInput from "./CustomInput";
+import CustomButtons from "./CustomButtons";
 
 // Not changing cause state is not changing, inputs are
 // being rendered the same as last time, and the vlaues
 // of new data change to last time's data
-function InfoForm({ type, data, onSubmit, currentTurn, disabled }) {
-    function inputChangeHandler(e) {
-        const dataId = e.target.id;
-        const toChange = data.find((info) => info.id === dataId);
-        toChange.value = e.target.value;
-    }
-
+function InfoForm({
+    type,
+    data,
+    onSubmit,
+    currentTurn,
+    disabled,
+    id,
+    inputChangeHandler,
+    onAdd,
+}) {
     if (currentTurn) {
         return (
             <section className={type}>
@@ -30,11 +34,7 @@ function InfoForm({ type, data, onSubmit, currentTurn, disabled }) {
                             );
                         })}
                     </div>
-                    <div className="general-btn-container btn-container">
-                        <button type="submit" className="submit">
-                            Submit
-                        </button>
-                    </div>
+                    <CustomButtons id={id} onAdd={onAdd} />
                 </form>
             </section>
         );
