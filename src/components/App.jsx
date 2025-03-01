@@ -49,7 +49,6 @@ function App() {
 
     function onSubmit(e) {
         e.preventDefault();
-        onAddHandler();
 
         // change the currently displayed form
         setCurrentInfoId(currentInfoId + 1);
@@ -69,16 +68,29 @@ function App() {
             }
         } else if (currentInfoId === 1) {
             for (const id in educationInfoValues) {
-                getInfo(1, id).value.push(educationInfoValues[id].at(-1));
+                getInfo(1, id).value = [...educationInfoValues[id]];
+                const nextEduInfoValuesForId = [...educationInfoValues[id]];
+                nextEduInfoValuesForId.push(educationInfoValues[id].at(-1));
+                setEducationInfoValues((prevValue) => ({
+                    ...prevValue,
+                    [id]: [...nextEduInfoValuesForId],
+                }));
             }
         } else {
             for (const id in experienceInfoValues) {
-                getInfo(2, id).value.push(experienceInfoValues[id].at(-1));
+                const nextExpInfoValuesForId = [...experienceInfoValues[id]];
+                nextExpInfoValuesForId.push(experienceInfoValues[id].at(-1));
+                getInfo(2, id).value = [...experienceInfoValues[id]];
+                setExperienceInfoValues((prevValue) => ({
+                    ...prevValue,
+                    [id]: [...nextExpInfoValuesForId],
+                }));
             }
         }
     }
 
     function inputChangeHandler(e) {
+        console.log(experienceInfoValues);
         const dataId = e.target.id;
         if (currentInfoId === 0) {
             setGeneralInfoValues({

@@ -35,18 +35,49 @@ function ExperienceInfo() {
     const responsibilities = info[2].value;
     const startWorkingDate = info[3].value;
     const endWorkingDate = info[4].value;
+    let requiredData = [];
+    for (let i = 0; i < companyName.length; i++) {
+        requiredData.push([
+            companyName[i],
+            position[i],
+            responsibilities[i],
+            startWorkingDate[i],
+            endWorkingDate[i],
+        ]);
+    }
 
     return (
         <section className={type + "-info"}>
             <div className="title">Experience</div>
-            <div className="content">
-                Worked as a <b>{position.shift() || "Managing Director"}</b> at{" "}
-                <b>{companyName.shift() || "BerkShire Hathway"}</b> from{" "}
-                <b>{startWorkingDate.shift() || "2070-01-15"}</b> to{" "}
-                <b>{endWorkingDate.shift() || "2075-12-20"}</b> where I held the
-                responsibilities of{" "}
-                <b>{responsibilities.shift() || "Managing People"}</b>.
-            </div>
+            {requiredData.map((item, index) => {
+                const companyName = item[0];
+                const position = item[1];
+                const responsibilities = item[2];
+                const startWorkingDate = item[3];
+                const endWorkingDate = item[4];
+
+                if (
+                    !(
+                        companyName ||
+                        position ||
+                        responsibilities ||
+                        startWorkingDate ||
+                        endWorkingDate
+                    )
+                )
+                    return null;
+                else
+                    return (
+                        <div className="content" key={index}>
+                            Worked as a <b>{position || "-"}</b> at{" "}
+                            <b>{companyName || "-"}</b> from{" "}
+                            <b>{startWorkingDate || "-"}</b> to{" "}
+                            <b>{endWorkingDate || "-"}</b> where I held the
+                            responsibilities of <b>{responsibilities || "-"}</b>
+                            .
+                        </div>
+                    );
+            })}
         </section>
     );
 }
@@ -59,7 +90,7 @@ function EducationInfo() {
     const date = info[2].value;
     let requiredData = [];
     for (let i = 0; i < school.length; i++) {
-        requiredData.push([[school[i], course[i], date[i]]]);
+        requiredData.push([school[i], course[i], date[i]]);
     }
 
     return (
@@ -69,7 +100,7 @@ function EducationInfo() {
                 const school = item[0];
                 const course = item[1];
                 const date = item[2];
-                console.log(school, course, date);
+                console.log(item);
                 if (!school && !course && !date) return null;
                 else
                     return (

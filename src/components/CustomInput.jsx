@@ -10,7 +10,7 @@ function CustomInput({
     disabled,
     storedValue,
 }) {
-    const [value, setValue] = useState(storedValue);
+    const [value, setValue] = useState(storedValue.at(-1));
 
     return (
         <>
