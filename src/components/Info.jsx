@@ -100,7 +100,6 @@ function EducationInfo() {
                 const school = item[0];
                 const course = item[1];
                 const date = item[2];
-                console.log(item);
                 if (!school && !course && !date) return null;
                 else
                     return (

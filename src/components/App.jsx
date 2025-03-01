@@ -90,7 +90,6 @@ function App() {
     }
 
     function inputChangeHandler(e) {
-        console.log(experienceInfoValues);
         const dataId = e.target.id;
         if (currentInfoId === 0) {
             setGeneralInfoValues({
@@ -123,38 +122,41 @@ function App() {
     const currentInfo = getRequiredInfo(currentInfoId);
 
     return (
-        <div className="container">
-            <div className="form-container">
-                {data.map((info) => {
-                    return (
-                        <div
-                            key={info.id}
-                            id={info.id}
-                            className="info-subform"
-                        >
-                            <h1
-                                className={info.type + "-info"}
-                                onClick={onClickHeader}
+        <>
+            <div className="app-title">Create Your CV</div>
+            <div className="container">
+                <div className="form-container">
+                    {data.map((info) => {
+                        return (
+                            <div
+                                key={info.id}
+                                id={info.id}
+                                className="info-subform"
                             >
-                                {info.type} Information
-                            </h1>
-                            <InfoForm
-                                currentTurn={currentInfoId === info.id}
-                                data={currentInfo.info}
-                                type={currentInfo.type}
-                                onSubmit={onSubmit}
-                                onAdd={onAddHandler}
-                                id={currentInfoId}
-                                inputChangeHandler={inputChangeHandler}
-                            />
-                        </div>
-                    );
-                })}
+                                <h1
+                                    className={info.type + "-info"}
+                                    onClick={onClickHeader}
+                                >
+                                    {info.type} Information
+                                </h1>
+                                <InfoForm
+                                    currentTurn={currentInfoId === info.id}
+                                    data={currentInfo.info}
+                                    type={currentInfo.type}
+                                    onSubmit={onSubmit}
+                                    onAdd={onAddHandler}
+                                    id={currentInfoId}
+                                    inputChangeHandler={inputChangeHandler}
+                                />
+                            </div>
+                        );
+                    })}
+                </div>
+                <div className="resume-container">
+                    <Info />
+                </div>
             </div>
-            <div className="resume-container">
-                <Info />
-            </div>
-        </div>
+        </>
     );
 }
 
